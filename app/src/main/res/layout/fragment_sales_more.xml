@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray0">
+
+        <LinearLayout
+            android:id="@id/lin_more4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@+id/view_more3">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_mail" />
+
+            <TextView
+                style="@style/textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="start|center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/language_setting"
+                android:textStyle="normal"
+
+                />
+
+            <ImageView
+                android:id="@+id/lang"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:clickable="false"
+                android:longClickable="false"
+                android:padding="15dp"
+                android:src="@drawable/ic_right_arrow" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_more4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_transparent"
+            app:layout_constraintTop_toBottomOf="@+id/lin_more4" />
+
+        <LinearLayout
+            android:id="@id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@+id/view_more4">
+
+            <ImageView
+                android:id="@id/logout_img"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_logout" />
+
+            <TextView
+                style="@style/textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="start|center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/Log_out"
+                android:textStyle="normal"
+
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_transparent"
+            app:layout_constraintTop_toBottomOf="@+id/logout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
