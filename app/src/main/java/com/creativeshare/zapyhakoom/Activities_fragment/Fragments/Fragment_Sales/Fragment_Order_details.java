@@ -87,36 +87,36 @@ public class Fragment_Order_details extends Fragment {
         if (orInnerData.getCutting().equals("0")) {
             cut = getString(R.string.fridge);
         } else if (orInnerData.getCutting().equals("1")) {
-            cut = getString(R.string.quarter);
+           cut = getString(R.string.hadrmi1);
         } else if (orInnerData.getCutting().equals("2")) {
-            cut = getString(R.string.half);
-        } else if (orInnerData.getCutting().equals("3")) {
-            cut = getString(R.string.alife);
-        } else if (orInnerData.getCutting().equals("4")) {
-            cut = getString(R.string.stand);
-        }
-        else if(orInnerData.getCutting().equals("5")){
             cut = getString(R.string.complete);
-        }
-        else if(orInnerData.getCutting().equals("6")){
-            cut = getString(R.string.hadrmi1);
-
-
-        } else if(orInnerData.getCutting().equals("7")){
-            cut = getString(R.string.hadrmi2);
-
-        }
+        } else if (orInnerData.getCutting().equals("3")) {
+            cut = getString(R.string.stand);}
+//        } else if (orInnerData.getCutting().equals("4")) {
+//            cut = getString(R.string.stand);
+//        }
+//        else if(orInnerData.getCutting().equals("5")){
+//            cut = getString(R.string.complete);
+//        }
+//        else if(orInnerData.getCutting().equals("6")){
+//            cut = getString(R.string.hadrmi1);
+//
+//
+//        } else if(orInnerData.getCutting().equals("7")){
+//           // cut = getString(R.string.hadrmi2);
+//
+//        }
         cutting.setText(cut + "");
     }
 
     public void cover() {
         String cover = "";
         if (orInnerData.getCovering().equals("0")) {
-            cover = getString(R.string.without);
-        } else if (orInnerData.getCovering().equals("1")) {
             cover = getString(R.string.plates);
-        } else if (orInnerData.getCovering().equals("2")) {
+        } else if (orInnerData.getCovering().equals("1")) {
             cover = getString(R.string.bags);
+        } else if (orInnerData.getCovering().equals("2")) {
+            cover = getString(R.string.with_a_big_bag_and_providing_the_client_with_meat_bags_free_of_charge);
         }
         covering.setText(cover + "");
     }

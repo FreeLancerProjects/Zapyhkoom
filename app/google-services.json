@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "365034763250",
+    "firebase_url": "https://zapyhkoom.firebaseio.com",
+    "project_id": "zapyhkoom",
+    "storage_bucket": "zapyhkoom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365034763250:android:3ded83746eebe14d76716b",
+        "android_client_info": {
+          "package_name": "com.creativeshare.zapyhkoom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365034763250-11g4oudmt4emhhco1h66lpsvq52v3btl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFnE2E5O-qPBtNi5bUfGoURAxkVQ_j-Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365034763250-11g4oudmt4emhhco1h66lpsvq52v3btl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
