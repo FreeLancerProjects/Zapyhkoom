@@ -26,7 +26,7 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     EditText phone;
-    EditText password;
+   // EditText password;
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(Language.updateResources(newBase, Language.getLanguage(newBase)));
@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
       phone=(EditText)findViewById(R.id.phone_login);
-        password=(EditText)findViewById(R.id.password_login);
+     //   password=(EditText)findViewById(R.id.password_login);
 
 
     }
@@ -51,32 +51,36 @@ public class Login extends AppCompatActivity {
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
         dialog.show();
 
-        String login_phone = phone.getText().toString();
-        String login_pass=password.getText().toString();
-        if(login_phone.isEmpty()||login_pass.isEmpty()){
+        final String login_phone = phone.getText().toString();
+       // final String login_pass=password.getText().toString();
+        if(login_phone.isEmpty()
+//                ||login_pass.isEmpty()
+        ){
             dialog.dismiss();
 
             if(login_phone.isEmpty()){
               phone.setError("");
           }
-          if(login_pass.isEmpty()){
-              password.setError("");
-
-          }
+//          if(login_pass.isEmpty()){
+//              password.setError("");
+//
+//          }
         }
         else{
             if(Common.isValidMobile(login_phone)==true){
             Common.CloseKeyBoard(Login.this,view);
         Api.getService()
-                .login(login_phone,login_pass)
+                .login(login_phone)
                 .enqueue(new Callback<UserModel>() {
                     @Override
                     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
 dialog.dismiss();
                         if (response.isSuccessful()) {
-                            Preferences.getInstance().create_update_userdata(Login.this, response.body());
-                            Intent i = new Intent(Login.this, Home_Activity.class);
-                            i.putExtra("param","2");
+                           // Preferences.getInstance().create_update_userdata(Login.this, response.body());
+                            Intent i = new Intent(Login.this, Activity_code.class);
+                            i.putExtra("phone",login_phone);
+                            i.putExtra("phone_code","+20");
+i.putExtra("user",response.body());
                             startActivity(i);
                             finish();
                         }

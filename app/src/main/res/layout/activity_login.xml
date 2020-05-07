@@ -50,11 +50,31 @@
                         android:layout_height="35dp"
                         android:padding="5dp"
                         android:src="@drawable/ic_phone" />
+                    <TextView
+                        android:id="@+id/tv_code"
 
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:textColor="@color/white"
+                        android:text="+966"
+                        android:clickable="false"
+                        android:longClickable="false"
+
+                        />
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:clickable="false"
+                        android:longClickable="false"
+                        />
                     <EditText
                         android:id="@+id/phone_login"
                         style="@style/edittextstyle"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/linear_shape"
@@ -65,43 +85,43 @@
                         android:textColorHint="#ffffffff" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="25dp"
-                    android:background="@drawable/linear_shape"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginLeft="25dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:layout_marginRight="25dp"-->
+<!--                    android:background="@drawable/linear_shape"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:padding="5dp"
-                        android:src="@drawable/ic_lock"
-                        android:tint="@color/white" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="35dp"-->
+<!--                        android:layout_height="35dp"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:src="@drawable/ic_lock"-->
+<!--                        android:tint="@color/white" />-->
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:errorEnabled="false"
-                        app:hintEnabled="false"
-                        app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="#ffffffff">
+<!--                    <com.google.android.material.textfield.TextInputLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        app:errorEnabled="false"-->
+<!--                        app:hintEnabled="false"-->
+<!--                        app:passwordToggleEnabled="true"-->
+<!--                        app:passwordToggleTint="#ffffffff">-->
 
-                        <EditText
-                            android:id="@+id/password_login"
-                            style="@style/edittextstyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="38dp"
-                            android:background="@android:color/transparent"
-                            android:hint="@string/user_password"
-                            android:inputType="textPassword"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
+<!--                        <EditText-->
+<!--                            android:id="@+id/password_login"-->
+<!--                            style="@style/edittextstyle"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="38dp"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:hint="@string/user_password"-->
+<!--                            android:inputType="textPassword"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textColorHint="@color/white" />-->
+<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+<!--                </LinearLayout>-->
 
                 <Button
                     android:layout_width="match_parent"

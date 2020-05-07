@@ -29,8 +29,8 @@ public interface Services {
 
     @FormUrlEncoded
     @POST("api/login")
-    Call<UserModel> login(@Field("mobile") String mobile,
-                          @Field("password") String password
+    Call<UserModel> login(@Field("mobile") String mobile//,
+                         // @Field("password") String password
     );
 
     @FormUrlEncoded

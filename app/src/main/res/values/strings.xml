@@ -15,13 +15,12 @@
     <string name="accountِ">Account</string>
     <string name="add_details">Add Details</string>
     <string name="address">Address</string>
-    <string name="alife">alife</string>
     <string name="app_name">ZApyhkoom</string>
     <string name="are_you_sure_back">Are you sure back ?</string>
     <string name="are_you_sure_cancel_order">are_you_sure_cancel_order</string>
     <string name="are_you_sure_finish_order">are you sure finish order?</string>
     <string name="back">back</string>
-    <string name="bags">bags</string>
+    <string name="bags">bags covring(15 ryal)</string>
     <string name="bank_account">Bank Accounts</string>
     <string name="binding">Binding</string>
     <string name="call">Send Message</string>
@@ -40,8 +39,7 @@
     <string name="edit">Edit</string>
     <string name="excuse_this_phone_register_before">Exxcuse This Phone register before</string>
     <string name="faild">faild</string>
-    <string name="fridge">fridge</string>
-    <string name="half">half</string>
+    <string name="fridge">cut fridge</string>
     <string name="home">Home</string>
     <string name="invaild_email">Invaild Email</string>
     <string name="invaild_phone">Invaild Phone</string>
@@ -65,11 +63,10 @@
     <string name="phone_number">Phone_Number</string>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
-    <string name="plates">Plates</string>
+    <string name="plates">Plates Covering (20 ryal)</string>
     <string name="please_enter_address">please enter address</string>
     <string name="product_detials">Product Detials</string>
     <string name="quantaty">quantaty</string>
-    <string name="quarter">quarter</string>
     <string name="rate">rate</string>
     <string name="sales_rating">Sales Rating</string>
     <string name="send_succsfull">send succsfull</string>
@@ -96,7 +93,12 @@
     <string name="waiting">Waiting</string>
     <string name="without">Without</string>
     <string name="yes">yes</string>
-    <string name="complete">Complete</string>
-    <string name="hadrmi1">Good, Hadrami 32 pieces</string>
-    <string name="hadrmi2">Good, Hadrami 8 pieces</string>
+    <string name="complete">Cut up lists</string>
+    <string name="hadrmi1">Hadrami Cutting</string>
+    <string name="resend">resend</string>
+    <string name="confirm">Confirm</string>
+    <string name="code">Code</string>
+    <string name="field_req">Field Requred</string>
+    <string name="with_a_big_bag_and_providing_the_client_with_meat_bags_free_of_charge">With a big bag and providing the client with meat bags (free of charge)</string>
+    <string name="sacrifice_cooked_mandi_250_riyals">Sacrifice cooked Mandi (250 riyals)</string>
 </resources>

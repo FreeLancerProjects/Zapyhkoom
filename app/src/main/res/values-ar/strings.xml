@@ -15,13 +15,12 @@
     <string name="accountِ">حسابى</string>
     <string name="add_details">اضف التفاصيل</string>
     <string name="address">العنوان</string>
-    <string name="alife"> حى</string>
     <string name="app_name">زبايحكم</string>
     <string name="are_you_sure_back">هل انت متاكد من العوده؟</string>
     <string name="are_you_sure_cancel_order">هل ترغب فى الغاء الطلب؟</string>
     <string name="are_you_sure_finish_order">هل انت متاكد من اتمام الطلب ؟</string>
     <string name="back">عودة</string>
-    <string name="bags">أكياس</string>
+    <string name="bags">تغليف اكياس (15 ريال)</string>
     <string name="bank_account">الحسابات البنكيه</string>
     <string name="binding">معلق</string>
     <string name="call">إرسال</string>
@@ -40,8 +39,7 @@
     <string name="edit">تعديل</string>
     <string name="excuse_this_phone_register_before">عذرا هذا الجوال تم تسجيله من قبل</string>
     <string name="faild">عذرا لم ينجح حاول مره اخرى</string>
-    <string name="fridge">ثلاجه</string>
-    <string name="half">نصف</string>
+    <string name="fridge">تقطيع ثلاجه</string>
     <string name="home">الرئيسية</string>
     <string name="invaild_email">ايميل خطأ</string>
     <string name="invaild_phone">رقم الهاتف غير صحيح</string>
@@ -65,11 +63,10 @@
     <string name="phone_number">رقم الجوال</string>
     <string name="place_autocomplete_clear_button">مسح البحث</string>
     <string name="place_autocomplete_search_hint">البحث</string>
-    <string name="plates">أطباق</string>
+    <string name="plates">تغليف طبق (20 ريال)</string>
     <string name="please_enter_address">من فضلك ادخل العنوان</string>
     <string name="product_detials">تفاصيل الصنف</string>
     <string name="quantaty">الكمية</string>
-    <string name="quarter">ربع</string>
     <string name="rate">تقيم</string>
     <string name="sales_rating">تقيم المندوب</string>
     <string name="send_succsfull">تم الارسال</string>
@@ -83,7 +80,7 @@
     <string name="slide1_desc3">حدد مواصفات الصنف الذى تريد شراءه واضغط اضافه الى السله</string>
     <string name="slide1_desc4">توجه الى السله الشرائيه لاتمام عملية الشراء</string>
     <string name="slide1_desc5">قم بالدفع من خلال احد وسائل الدفع فى التطبيق وانتظر التوصيل</string>
-    <string name="stand">مفطح</string>
+    <string name="stand"> تفصيل مفطح</string>
     <string name="stat_app">ابدا</string>
     <string name="sucess">تم</string>
     <string name="total">المجموع</string>
@@ -96,7 +93,12 @@
     <string name="waiting">قيد التنفيذ</string>
     <string name="without">بدون</string>
     <string name="yes">نعم</string>
-    <string name="complete">كامله</string>
-    <string name="hadrmi1">تفصيل حضرمى 32 قطعه</string>
-    <string name="hadrmi2">تفصيل حضرمى 8 قطع</string>
+    <string name="complete">تقطيع قوائم</string>
+    <string name="hadrmi1">تقطيع حضرمى </string>
+    <string name="resend">اعادة ارسال</string>
+    <string name="confirm">تاكيد</string>
+    <string name="code">كود</string>
+    <string name="field_req">الحقل مطلوب</string>
+    <string name="with_a_big_bag_and_providing_the_client_with_meat_bags_free_of_charge">بكيس كبير مع تزويد العميل باكياس لحمه ( مجانا )</string>
+    <string name="sacrifice_cooked_mandi_250_riyals">طلب الذبيحه مطبوخه مندى (250 ريال )</string>
 </resources>

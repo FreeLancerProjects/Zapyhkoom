@@ -47,7 +47,7 @@ public class Sign_Up extends AppCompatActivity {
     public void sinup(View view){
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
         dialog.show();
-        String sinup_phone = phone.getText().toString();
+        final String sinup_phone = phone.getText().toString();
         String sinup_pass=pass.getText().toString();
         String sinup_name=name.getText().toString();
         if(sinup_phone.isEmpty()||sinup_pass.isEmpty()||sinup_pass.length()<6||sinup_name.isEmpty()){
@@ -78,9 +78,10 @@ public class Sign_Up extends AppCompatActivity {
 
                             if (response.isSuccessful()) {
 
-                                Preferences.getInstance().create_update_userdata(Sign_Up.this, response.body());
-                                Intent i = new Intent(Sign_Up.this, Home_Activity.class);
-                                i.putExtra("param","3");
+                                Intent i = new Intent(Sign_Up.this, Activity_code.class);
+                                i.putExtra("phone",sinup_phone);
+                                i.putExtra("phone_code","+20");
+                                i.putExtra("user",response.body());
                                 startActivity(i);
                                 finish();
                             }

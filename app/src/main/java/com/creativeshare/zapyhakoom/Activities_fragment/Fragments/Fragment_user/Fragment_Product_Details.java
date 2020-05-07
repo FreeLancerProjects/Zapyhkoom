@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -52,6 +53,7 @@ public class Fragment_Product_Details extends Fragment {
     private TextView quantity, size, total;
     private Spinner cutting;
     private RadioGroup covering, kersh;
+    private CheckBox checkBox;
     private EditText details;
     private Button complete;
     private RadioButton without;
@@ -114,6 +116,7 @@ public class Fragment_Product_Details extends Fragment {
         details = (EditText) view.findViewById(R.id.details);
         complete = (Button) view.findViewById(R.id.complete);
         total = (TextView) view.findViewById(R.id.total);
+        checkBox=view.findViewById(R.id.checkbox);
         param = getArguments().getInt(Tag);
         Orders_Cart_Model = new Orders_Cart_Model();
         if (preferences.getUserData(activity) != null) {
@@ -153,13 +156,10 @@ public class Fragment_Product_Details extends Fragment {
         list1 = new ArrayList<String>();
         adp3 = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item, list1);
         list1.add(getResources().getString(R.string.fridge));
-        list1.add(getResources().getString(R.string.quarter));
-        list1.add(getResources().getString(R.string.half));
-        list1.add(getResources().getString(R.string.alife));
-        list1.add(getResources().getString(R.string.stand));
-        list1.add(getResources().getString(R.string.complete));
         list1.add(getResources().getString(R.string.hadrmi1));
-        list1.add(getResources().getString(R.string.hadrmi2));
+        list1.add(getResources().getString(R.string.complete));
+
+        list1.add(getResources().getString(R.string.stand));
 
 
         cutting.setAdapter(adp3);

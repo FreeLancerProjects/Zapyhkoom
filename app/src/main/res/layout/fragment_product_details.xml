@@ -179,10 +179,10 @@
                 <RadioGroup
                     android:id="@+id/packing_buy"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/textbuy2">
 
                     <RadioButton
@@ -191,7 +191,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:checked="false"
-                        android:text="@string/without"
+                        android:text="@string/plates"
+                        android:textSize="10sp"
                         android:theme="@style/MyRadioButton" />
 
                     <RadioButton
@@ -201,6 +202,7 @@
                         android:layout_weight="1"
                         android:checked="false"
                         android:text="@string/bags"
+                        android:textSize="10sp"
                         android:theme="@style/MyRadioButton" />
 
                     <RadioButton
@@ -209,7 +211,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:checked="false"
-                        android:text="@string/plates"
+                        android:text="@string/with_a_big_bag_and_providing_the_client_with_meat_bags_free_of_charge"
+                        android:textSize="10sp"
                         android:theme="@style/MyRadioButton" />
                 </RadioGroup>
 
@@ -258,7 +261,17 @@
                     android:layout_marginTop="8dp"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/Kersh">
-
+                    <CheckBox
+                        android:id="@+id/checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="@string/sacrifice_cooked_mandi_250_riyals"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:theme="@style/MyRadioButton" />
                     <TextView
                         style="@style/textstyle"
                         android:layout_width="match_parent"
