@@ -31,7 +31,7 @@ public class Orders_Model implements Serializable {
             private String updated_at;
             private String order_status;
             private String description;
-
+private int others;
             public String getDescription() {
                 return description;
             }
@@ -102,7 +102,9 @@ public class Orders_Model implements Serializable {
             }
 
 
-
+            public int getOthers() {
+                return others;
+            }
 
             public product getproduct() {
                 return product;

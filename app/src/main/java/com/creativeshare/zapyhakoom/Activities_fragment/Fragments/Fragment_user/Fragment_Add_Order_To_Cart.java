@@ -145,10 +145,7 @@ public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCa
                     address.setError("");
                 } else if (isgetaddress == false) {
                     Common.CreateSignAlertDialog(activity, activity.getString(R.string.please_enter_address));
-                } else if (Common.validateUsing_libphonenumber("00966",phone.getText().toString()) == false) {
-                    Common.CreateSignAlertDialog(activity, activity.getString(R.string.invaild_phone));
-
-                } else if (phone.getText().toString().isEmpty()) {
+                }  else if (phone.getText().toString().isEmpty()) {
                     phone.setError("");
 
                 } else {

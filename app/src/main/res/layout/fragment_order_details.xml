@@ -173,6 +173,15 @@
                     android:layout_marginTop="8dp"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/Kersh">
+                    <TextView
+                        android:id="@+id/others"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal"
+                      android:textSize="15sp"
+                       />
 
                     <TextView
                         style="@style/textstyle"

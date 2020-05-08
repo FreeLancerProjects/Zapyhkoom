@@ -23,7 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Fragment_Order_details extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private TextView quantity, size, cutting, covering, kersh_mosran, details, total;
+    private TextView quantity, size, cutting, covering, kersh_mosran, details, total,others;
     private CircleImageView circleImageView;
     private Button user_details;
     private Orders_Model.InnerData orInnerData;
@@ -57,6 +57,7 @@ public class Fragment_Order_details extends Fragment {
         kersh_mosran = view.findViewById(R.id.Kersh);
         details = view.findViewById(R.id.details);
         total = view.findViewById(R.id.total);
+        others=view.findViewById(R.id.others);
         circleImageView = view.findViewById(R.id.img_product_details);
         user_details = view.findViewById(R.id.complete);
         orInnerData = (Orders_Model.InnerData) getArguments().getSerializable(Tag);
@@ -79,7 +80,9 @@ public class Fragment_Order_details extends Fragment {
                 activity.DisplayFragmentUserDetilas(orInnerData);
             }
         });
-
+if(orInnerData.getOthers() ==1){
+    others.setText(activity.getResources().getString(R.string.sacrifice_cooked_mandi_250_riyals));
+}
     }
 
     public void cutt() {

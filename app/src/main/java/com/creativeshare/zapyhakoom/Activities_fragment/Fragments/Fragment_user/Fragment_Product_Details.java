@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -229,31 +230,32 @@ public class Fragment_Product_Details extends Fragment {
 
                 } else if (position == 1) {
                     if (param == 1) {
-                        total1 += Double.parseDouble(prods.getQuarter_cutting_price());
-                        cutt = Double.parseDouble(prods.getQuarter_cutting_price());
+                        total1 += Double.parseDouble(prods.getHadramy());
+                        cutt = Double.parseDouble(prods.getHadramy());
                     } else {
-                        total1 += Double.parseDouble(data.getQuarter_cutting_price());
-                        cutt = Double.parseDouble(data.getQuarter_cutting_price());
+                        total1 += Double.parseDouble(data.getHadramy());
+                        cutt = Double.parseDouble(data.getHadramy());
                     }
                 } else if (position == 2) {
                     if (param == 1) {
-                        total1 += Double.parseDouble(prods.getHalf_cutting_price());
-                        cutt = Double.parseDouble(prods.getHalf_cutting_price());
+                        total1 += Double.parseDouble(prods.getKwayem());
+                        cutt = Double.parseDouble(prods.getKwayem());
                     } else {
-                        total1 += Double.parseDouble(data.getHalf_cutting_price());
-                        cutt = Double.parseDouble(data.getHalf_cutting_price());
-                    }
+                        total1 += Double.parseDouble(data.getKwayem());
+                        cutt = Double.parseDouble(data.getKwayem());
+                    }}
 
-                } else if (position == 3) {
-                    if (param == 1) {
-                        total1 += Double.parseDouble(prods.getAlife_price());
-                        cutt = Double.parseDouble(prods.getAlife_price());
-                    } else {
-                        total1 += Double.parseDouble(data.getAlife_price());
-                        cutt = Double.parseDouble(data.getAlife_price());
-                    }
-
-                } else  {
+//                } else if (position == 3) {
+//                    if (param == 1) {
+//                        total1 += Double.parseDouble(prods.getAlife_price());
+//                        cutt = Double.parseDouble(prods.getAlife_price());
+//                    } else {
+//                        total1 += Double.parseDouble(data.getAlife_price());
+//                        cutt = Double.parseDouble(data.getAlife_price());
+//                    }
+//
+//                }
+                else  {
                     if (param == 1) {
                         total1 += Double.parseDouble(prods.getStand_price());
                         cutt = Double.parseDouble(prods.getStand_price());
@@ -339,6 +341,20 @@ public class Fragment_Product_Details extends Fragment {
                     cover_ing = "0";
 
                 }
+                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                       if(isChecked){
+                           total.setText((Double.parseDouble(total.getText().toString())+250)+"");
+                           Orders_Cart_Model.setOthers(1);
+                       }
+                       else {
+                           Orders_Cart_Model.setOthers(0);
+
+                           total.setText((Double.parseDouble(total.getText().toString())-250)+"");
+                       }
+                    }
+                });
                 Orders_Cart_Model.setQuantity(Integer.parseInt(quantity.getText().toString()));
                 Orders_Cart_Model.setCutting(cutting.getSelectedItemPosition() + "");
                 Orders_Cart_Model.setCovering(cover_ing);

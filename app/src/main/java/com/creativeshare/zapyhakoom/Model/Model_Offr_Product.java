@@ -57,6 +57,8 @@ public class Model_Offr_Product implements Serializable {
             private String half_cutting_price;
             private String alife_price;
             private String stand_price;
+            private String hadramy;
+            private String kwayem;
             private String plastic_price;
             private String plates_price;
             private String kersh_and_mosran_price;
@@ -105,6 +107,14 @@ public class Model_Offr_Product implements Serializable {
 
             public String getAlife_price() {
                 return alife_price;
+            }
+
+            public String getHadramy() {
+                return hadramy;
+            }
+
+            public String getKwayem() {
+                return kwayem;
             }
 
             public String getStand_price() {

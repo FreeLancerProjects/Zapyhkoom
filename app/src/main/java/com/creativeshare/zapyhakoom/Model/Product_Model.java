@@ -102,16 +102,16 @@ public class Product_Model implements Serializable {
         private  String created_at;
         private String updated_at;
 
+        private String hadramy;
+        private String kwayem;
 
 
+        public String getHadramy() {
+            return hadramy;
+        }
 
-
-
-
-
-
-
-
-
+        public String getKwayem() {
+            return kwayem;
+        }
     }}
 

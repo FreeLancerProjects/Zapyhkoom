@@ -19,7 +19,7 @@ public class Orders_Cart_Model implements Serializable {
     private String covering;
     private String description;
     private int quantity;
-
+private int others;
     public String getName() {
         return name;
     }
@@ -134,6 +134,12 @@ public class Orders_Cart_Model implements Serializable {
         return quantity;
     }
 
+    public int getOthers() {
+        return others;
+    }
 
+    public void setOthers(int others) {
+        this.others = others;
+    }
 }
 
