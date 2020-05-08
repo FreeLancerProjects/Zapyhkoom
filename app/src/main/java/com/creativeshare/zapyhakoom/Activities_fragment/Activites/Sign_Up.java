@@ -79,7 +79,7 @@ public class Sign_Up extends AppCompatActivity {
 
                                 Intent i = new Intent(Sign_Up.this, Activity_code.class);
                                 i.putExtra("phone",sinup_phone);
-                                i.putExtra("phone_code","+20");
+                                i.putExtra("phone_code","+966");
                                 i.putExtra("user",response.body());
                                 startActivity(i);
                                 finish();

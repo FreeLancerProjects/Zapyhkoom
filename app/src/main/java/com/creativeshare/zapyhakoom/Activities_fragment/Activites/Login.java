@@ -79,7 +79,7 @@ dialog.dismiss();
                            // Preferences.getInstance().create_update_userdata(Login.this, response.body());
                             Intent i = new Intent(Login.this, Activity_code.class);
                             i.putExtra("phone",login_phone);
-                            i.putExtra("phone_code","+20");
+                            i.putExtra("phone_code","+966");
 i.putExtra("user",response.body());
                             startActivity(i);
                             finish();

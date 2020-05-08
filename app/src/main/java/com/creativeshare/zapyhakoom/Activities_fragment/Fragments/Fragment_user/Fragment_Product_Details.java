@@ -341,20 +341,7 @@ public class Fragment_Product_Details extends Fragment {
                     cover_ing = "0";
 
                 }
-                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                       if(isChecked){
-                           total.setText((Double.parseDouble(total.getText().toString())+250)+"");
-                           Orders_Cart_Model.setOthers(1);
-                       }
-                       else {
-                           Orders_Cart_Model.setOthers(0);
 
-                           total.setText((Double.parseDouble(total.getText().toString())-250)+"");
-                       }
-                    }
-                });
                 Orders_Cart_Model.setQuantity(Integer.parseInt(quantity.getText().toString()));
                 Orders_Cart_Model.setCutting(cutting.getSelectedItemPosition() + "");
                 Orders_Cart_Model.setCovering(cover_ing);
@@ -363,7 +350,20 @@ public class Fragment_Product_Details extends Fragment {
                 activity.DisplayAddtoCart(Orders_Cart_Model);
             }
         });
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    total.setText((Double.parseDouble(total.getText().toString())+250)+"");
+                    Orders_Cart_Model.setOthers(1);
+                }
+                else {
+                    Orders_Cart_Model.setOthers(0);
 
+                    total.setText((Double.parseDouble(total.getText().toString())-250)+"");
+                }
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
