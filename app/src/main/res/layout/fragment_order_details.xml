@@ -68,6 +68,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:text="1"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +82,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/quantity">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
@@ -97,6 +98,7 @@
 
                         <TextView
                             android:id="@+id/size"
+                            android:textSize="15sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -118,7 +120,7 @@
                         <TextView
                             android:id="@+id/cutting"
                             android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_weight="1"
                             android:textSize="15sp" />
                     </LinearLayout>
@@ -143,6 +145,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:orientation="horizontal"
+                    android:textSize="15sp"
                     app:layout_constraintTop_toBottomOf="@+id/textbuy2" />
 
                 <TextView
@@ -164,6 +167,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:orientation="horizontal"
+                    android:textSize="15sp"
                     app:layout_constraintTop_toBottomOf="@+id/textbuy3" />
 
                 <LinearLayout
@@ -198,6 +202,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
+                        android:textSize="15sp"
                         android:background="@drawable/create_order_edit" />
                 </LinearLayout>
 
@@ -225,6 +230,7 @@
                         android:layout_weight="0.5"
                         android:gravity="right"
                         android:text="950"
+
                         android:textSize="15sp" />
                 </LinearLayout>
 

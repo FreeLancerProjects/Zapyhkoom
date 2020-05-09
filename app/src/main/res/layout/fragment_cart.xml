@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_cart"
@@ -73,6 +73,7 @@
                 android:layout_weight="1.0"
                 android:background="@drawable/linear_shape"
                 android:text="@string/continues"
+                android:textSize="16sp"
                 android:textColor="@color/white" />
 
             <Button
@@ -85,6 +86,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/linear_shape"
                 android:text="@string/back"
+                android:textSize="16sp"
                 android:textColor="@color/white" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

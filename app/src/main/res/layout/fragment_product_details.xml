@@ -133,7 +133,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            />
                     </LinearLayout>
 
 
@@ -161,7 +163,9 @@
                         style="@style/spinner_style"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        />
                 </LinearLayout>
 
                 <TextView
@@ -192,7 +196,7 @@
                         android:layout_weight="1"
                         android:checked="false"
                         android:text="@string/plates"
-                        android:textSize="10sp"
+                        android:textSize="15sp"
                         android:theme="@style/MyRadioButton" />
 
                     <RadioButton
@@ -202,7 +206,7 @@
                         android:layout_weight="1"
                         android:checked="false"
                         android:text="@string/bags"
-                        android:textSize="10sp"
+                        android:textSize="15sp"
                         android:theme="@style/MyRadioButton" />
 
                     <RadioButton
@@ -212,7 +216,7 @@
                         android:layout_weight="1"
                         android:checked="false"
                         android:text="@string/with_a_big_bag_and_providing_the_client_with_meat_bags_free_of_charge"
-                        android:textSize="10sp"
+                        android:textSize="15sp"
                         android:theme="@style/MyRadioButton" />
                 </RadioGroup>
 
@@ -243,6 +247,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="@string/yes"
+                        android:textSize="15sp"
                         android:theme="@style/MyRadioButton" />
 
                     <RadioButton
@@ -251,6 +256,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:text="@string/no"
+                        android:textSize="15sp"
                         android:theme="@style/MyRadioButton" />
                 </RadioGroup>
 
@@ -287,6 +293,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
+                        android:textSize="15sp"
                         android:background="@drawable/create_order_edit" />
                 </LinearLayout>
 
@@ -314,6 +321,7 @@
                         android:layout_weight="0.5"
                         android:gravity="right"
                         android:text="950"
+                        android:textSize="15sp"
                         android:textColor="@color/black" />
                 </LinearLayout>
 
