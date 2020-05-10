@@ -109,33 +109,7 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textv1"
-                style="@style/textstyle"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:onClick="sign_up"
-                android:padding="10dp"
-                android:text="@string/new_user"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lin_login"
-                app:layout_constraintVertical_bias="1" />
 
-            <TextView
-                android:id="@+id/skip"
-                style="@style/textstyle"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:gravity="right"
-                android:onClick="skip"
-                android:padding="10dp"
-                android:text="@string/skip"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/textv1"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lin_login"
-                app:layout_constraintVertical_bias="1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </ScrollView>
