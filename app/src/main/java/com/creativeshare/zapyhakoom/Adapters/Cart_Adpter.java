@@ -86,6 +86,9 @@ deleteItem(viewHolder.getLayoutPosition());
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, list.size());
         preferences.create_update_order(activity,list);
+        if(list.size()==0){
+            activity.update();
+        }
     }
 }
 

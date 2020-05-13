@@ -153,5 +153,15 @@ continue_order.setVisibility(View.GONE);
         activity.DisplayFragmentOrders();
     }
 
+    public void Accept2() {
+        error.setText(activity.getString(R.string.no_data));
+        linearLayout.setVisibility(View.GONE);
+        cart.setVisibility(View.GONE);
+        back.setVisibility(View.GONE);
+        continue_order.setVisibility(View.GONE);
+        order.removeAll(order);
+        cart_adpter.notifyDataSetChanged();
+        preferences.create_update_order(activity, null);
 
+    }
 }
