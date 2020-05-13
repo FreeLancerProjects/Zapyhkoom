@@ -120,7 +120,6 @@ public class Home_Activity extends AppCompatActivity  implements LocationListene
         setContentView(R.layout.activity_home__main);
         initView();
         if (savedInstanceState == null) {
-            check_permission();
 
             // CheckPermission();
             fragmentManager = this.getSupportFragmentManager();
@@ -742,7 +741,7 @@ public void DisplayFragmentCompletedOrder(){
 
     public void DisplayAddtoCart(Orders_Cart_Model Orders_Cart_Model) {
         fragment_count += 1;
-        fragmentCompleteOrder = Fragment_Add_Order_To_Cart.newInstance(Orders_Cart_Model,lat,lang);
+        fragmentCompleteOrder = Fragment_Add_Order_To_Cart.newInstance(Orders_Cart_Model);
         if (fragmentCompleteOrder.isAdded()) {
             fragmentManager.beginTransaction().show(fragmentCompleteOrder).commit();
         } else {

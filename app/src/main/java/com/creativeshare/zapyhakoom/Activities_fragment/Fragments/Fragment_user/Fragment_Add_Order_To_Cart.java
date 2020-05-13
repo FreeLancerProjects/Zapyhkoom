@@ -1,13 +1,24 @@
 package com.creativeshare.zapyhakoom.Activities_fragment.Fragments.Fragment_user;
 
 
+import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -51,7 +62,7 @@ import retrofit2.Response;
 /**
  *
  */
-public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCallback  {
+public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCallback , LocationListener {
     private List<com.creativeshare.zapyhakoom.Model.Orders_Cart_Model> buy_modelArrayList;
     private Orders_Cart_Model Orders_Cart_Model;
     private static PlaceMapDetailsData placeMapDetailsData;
@@ -71,6 +82,8 @@ public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCa
     private Button complete;
     private ImageView back;
     private boolean isgetaddress = false,changeaddress=false;
+    public LocationManager locationManager;
+    public int per=0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,6 +91,7 @@ public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCa
         View view = inflater.inflate(R.layout.fragment_add_order_to_cart, container, false);
         updtae_map();
         intitview(view);
+        check_permission();
 
 
         return view;
@@ -97,19 +111,9 @@ public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCa
         address = view.findViewById(R.id.address);
         back = view.findViewById(R.id.back_complete);
         Orders_Cart_Model = (Orders_Cart_Model) getArguments().getSerializable(Tag);
-        lat=getArguments().getDouble(Tag1);
-        lng=getArguments().getDouble(Tag2);
-        while (lat==0.0&&lng==0.0){
+//        lat=getArguments().getDouble(Tag1);
+//        lng=getArguments().getDouble(Tag2);
 
-            this.lat=activity.lat;
-            this.lng=activity.lang;
-
-            if ( !activity.locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
-              break;
-
-            }
-
-        }
         if(preferences.getUserData(activity)!=null){
         phone.setText(preferences.getUserData(activity).getData().getMobile());}
         getgecode(lat,lng);
@@ -221,12 +225,12 @@ if(task.isSuccessful()){
 }
     }*/
 
-    public static Fragment_Add_Order_To_Cart newInstance(Orders_Cart_Model orders_Cart_Model, double lat, double lang) {
+    public static Fragment_Add_Order_To_Cart newInstance(Orders_Cart_Model orders_Cart_Model) {
         Fragment_Add_Order_To_Cart fragment_add_orderCart = new Fragment_Add_Order_To_Cart();
         Bundle bundle = new Bundle();
         bundle.putSerializable(Tag, orders_Cart_Model);
-        bundle.putDouble(Tag1,lat);
-        bundle.putDouble(Tag2,lang);
+//        bundle.putDouble(Tag1,lat);
+//        bundle.putDouble(Tag2,lang);
         fragment_add_orderCart.setArguments(bundle);
         return fragment_add_orderCart;
     }
@@ -332,6 +336,88 @@ if(task.isSuccessful()){
         mMap.setIndoorEnabled(true);
     }
 
+    public void check_permission(){
+        if(ContextCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED&&ContextCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(activity,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},102);
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+
+        if (requestCode == 102 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED&&grantResults[1]==PackageManager.PERMISSION_GRANTED) {
+            get_location();
+        }
+    }
+    public void get_location(){
+        try {
+            locationManager=(LocationManager)activity.getSystemService(Context.LOCATION_SERVICE);
+
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,activity);
+
+
+        }
+        catch (SecurityException e){
+        }
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        get_location();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        locationManager.removeUpdates(activity);    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        lat=location.getLatitude();
+        lng=location.getLongitude();
+        address_path=location.toString();
+        AddMarker(lat,lng,false);
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        buildAlertMessageNoGps();
+    }
+
+    public int buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        per=1;
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivityForResult(intent, 33);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        per=0;
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+        return per;
+    }
 
 }
