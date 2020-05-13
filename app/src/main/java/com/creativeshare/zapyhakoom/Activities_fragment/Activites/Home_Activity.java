@@ -991,7 +991,7 @@ locationManager.removeUpdates(this);    }
 
     @Override
     public void onProviderDisabled(String provider) {
-buildAlertMessageNoGps();
+//buildAlertMessageNoGps();
     }
 
     public int buildAlertMessageNoGps() {
