@@ -2,22 +2,26 @@ package com.creativeshare.zapyhakoom.Activities_fragment.Fragments.Fragment_user
 
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.os.Looper;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,6 +34,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.creativeshare.zapyhakoom.Model.Orders_Cart_Model;
 import com.creativeshare.zapyhakoom.Model.PlaceGeocodeData;
@@ -39,6 +44,19 @@ import com.creativeshare.zapyhakoom.preferences.Preferences;
 import com.creativeshare.zapyhakoom.remote.Api;
 import com.creativeshare.zapyhakoom.Activities_fragment.Activites.Home_Activity;
 import com.creativeshare.zapyhakoom.R;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -62,7 +80,7 @@ import retrofit2.Response;
 /**
  *
  */
-public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCallback , LocationListener {
+public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener{
     private List<com.creativeshare.zapyhakoom.Model.Orders_Cart_Model> buy_modelArrayList;
     private Orders_Cart_Model Orders_Cart_Model;
     private static PlaceMapDetailsData placeMapDetailsData;
@@ -82,16 +100,20 @@ public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCa
     private Button complete;
     private ImageView back;
     private boolean isgetaddress = false,changeaddress=false;
-    public LocationManager locationManager;
-    public int per=0;
+        public int per=0;
+    private GoogleApiClient googleApiClient;
+    private LocationRequest locationRequest;
+    private LocationCallback locationCallback;
+    private final String fineLocPerm = Manifest.permission.ACCESS_FINE_LOCATION;
+    private final int loc_req = 1225;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_order_to_cart, container, false);
-        updtae_map();
         intitview(view);
-        check_permission();
+        updtae_map();
+        CheckPermission();
 
 
         return view;
@@ -335,89 +357,144 @@ if(task.isSuccessful()){
         mMap.setBuildingsEnabled(false);
         mMap.setIndoorEnabled(true);
     }
-
-    public void check_permission(){
-        if(ContextCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED&&ContextCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(activity,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},102);
-        }
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    private void CheckPermission()
     {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (ActivityCompat.checkSelfPermission(activity,fineLocPerm) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{fineLocPerm}, loc_req);
+        } else {
 
-
-        if (requestCode == 102 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED&&grantResults[1]==PackageManager.PERMISSION_GRANTED) {
-            get_location();
+            initGoogleApi();
         }
     }
-    public void get_location(){
-        try {
-            locationManager=(LocationManager)activity.getSystemService(Context.LOCATION_SERVICE);
-
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,activity);
-
-
-        }
-        catch (SecurityException e){
-        }
-
+    private void initGoogleApi() {
+        googleApiClient = new GoogleApiClient.Builder(activity)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+        googleApiClient.connect();
     }
     @Override
-    public void onResume() {
-        super.onResume();
-        get_location();
+    public void onConnected(@Nullable Bundle bundle) {
+        initLocationRequest();
+    }
+
+    private void initLocationRequest() {
+        locationRequest = LocationRequest.create();
+        locationRequest.setFastestInterval(1000);
+        locationRequest.setInterval(60000);
+        LocationSettingsRequest.Builder request = new LocationSettingsRequest.Builder();
+        request.addLocationRequest(locationRequest);
+        request.setAlwaysShow(false);
+
+
+        PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, request.build());
+        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+            @Override
+            public void onResult(@NonNull LocationSettingsResult locationSettingsResult) {
+                Status status = locationSettingsResult.getStatus();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        startLocationUpdate();
+                        break;
+
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        try {
+                            status.startResolutionForResult(activity,100);
+                        } catch (IntentSender.SendIntentException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+
+                }
+            }
+        });
+
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        locationManager.removeUpdates(activity);    }
+    public void onConnectionSuspended(int i) {
+        if (googleApiClient!=null)
+        {
+            googleApiClient.connect();
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+
+    @SuppressLint("MissingPermission")
+    private void startLocationUpdate()
+    {
+        locationCallback = new LocationCallback()
+        {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                onLocationChanged(locationResult.getLastLocation());
+            }
+        };
+        LocationServices.getFusedLocationProviderClient(activity)
+                .requestLocationUpdates(locationRequest,locationCallback, Looper.myLooper());
+    }
 
     @Override
     public void onLocationChanged(Location location) {
-        lat=location.getLatitude();
-        lng=location.getLongitude();
-        address_path=location.toString();
+        lat = location.getLatitude();
+        lng = location.getLongitude();
         AddMarker(lat,lng,false);
+        getgecode(lat,lng);
 
+        if (googleApiClient!=null)
+        {
+            LocationServices.getFusedLocationProviderClient(activity).removeLocationUpdates(locationCallback);
+            googleApiClient.disconnect();
+            googleApiClient = null;
+        }
     }
 
     @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
+    public void onDestroy() {
+        super.onDestroy();
+        if (googleApiClient!=null)
+        {
+            if (locationCallback!=null)
+            {
+                LocationServices.getFusedLocationProviderClient(activity).removeLocationUpdates(locationCallback);
+                googleApiClient.disconnect();
+                googleApiClient = null;
+            }
+        }
     }
 
     @Override
-    public void onProviderEnabled(String provider) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+        if (requestCode == loc_req)
+        {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                initGoogleApi();
+            }else
+            {
+                Toast.makeText(activity, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
-    public void onProviderDisabled(String provider) {
-        buildAlertMessageNoGps();
-    }
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-    public int buildAlertMessageNoGps() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        per=1;
-                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivityForResult(intent, 33);
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        per=0;
-                        dialog.cancel();
-                    }
-                });
-        final AlertDialog alert = builder.create();
-        alert.show();
-        return per;
+        if (requestCode == 100&&resultCode== Activity.RESULT_OK)
+        {
+
+            startLocationUpdate();
+        }
+
     }
 
 }

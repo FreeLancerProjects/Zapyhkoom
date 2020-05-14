@@ -97,10 +97,13 @@ public class Fragment_Cart extends Fragment {
                     }
                 }
             });
-        } else {
+        }
+        else {
             error.setText(activity.getString(R.string.no_data));
             linearLayout.setVisibility(View.GONE);
             cart.setVisibility(View.GONE);
+back.setVisibility(View.GONE);
+continue_order.setVisibility(View.GONE);
         }
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -120,12 +123,7 @@ public class Fragment_Cart extends Fragment {
 
 
                 if (response.isSuccessful()) {
-                    order.removeAll(order);
-                    cart_adpter.notifyDataSetChanged();
-                    preferences.create_update_order(activity, null);
-                    Common.CreateSignAlertDialog(activity, getResources().getString(R.string.sucess));
-                    activity.Back();
-                    activity.DisplayFragmentOrders();
+                   Accept();
                 } else {
 
                     Log.e("Error code", response.code() + "" + response.errorBody());
@@ -141,5 +139,29 @@ public class Fragment_Cart extends Fragment {
         });
     }
 
+    private void Accept() {
+        error.setText(activity.getString(R.string.no_data));
+        linearLayout.setVisibility(View.GONE);
+        cart.setVisibility(View.GONE);
+        back.setVisibility(View.GONE);
+        continue_order.setVisibility(View.GONE);
+        order.removeAll(order);
+        cart_adpter.notifyDataSetChanged();
+        preferences.create_update_order(activity, null);
+        Common.CreateSignAlertDialog(activity, getResources().getString(R.string.sucess));
+        activity.Back();
+        activity.DisplayFragmentOrders();
+    }
 
+    public void Accept2() {
+        error.setText(activity.getString(R.string.no_data));
+        linearLayout.setVisibility(View.GONE);
+        cart.setVisibility(View.GONE);
+        back.setVisibility(View.GONE);
+        continue_order.setVisibility(View.GONE);
+        order.removeAll(order);
+        cart_adpter.notifyDataSetChanged();
+        preferences.create_update_order(activity, null);
+
+    }
 }

@@ -1015,4 +1015,10 @@ locationManager.removeUpdates(this);    }
         alert.show();
         return per;
     }
+
+    public void update() {
+        if(fragment_cart!=null){
+            fragment_cart.Accept2();
+        }
+    }
 }
