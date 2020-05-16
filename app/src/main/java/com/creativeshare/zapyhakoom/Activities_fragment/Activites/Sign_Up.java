@@ -42,7 +42,9 @@ public class Sign_Up extends AppCompatActivity {
         name=(EditText)findViewById(R.id.name_sinup);
         phone=(EditText)findViewById(R.id.phone_sinup);
         pass=(EditText)findViewById(R.id.pass_sinup);
-
+if(getIntent().getStringExtra("phone")!=null){
+    phone.setText(getIntent().getStringExtra("phone"));
+}
     }
     public void sinup(View view){
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));

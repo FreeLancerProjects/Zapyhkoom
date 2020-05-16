@@ -92,8 +92,13 @@ i.putExtra("user",response.body());
                                 e.printStackTrace();
                             }
                             if (response.code() == 404)
-                            {   Common.CreateSignAlertDialog(Login.this,getResources().getString(R.string.user_not_found));
+                            {
 
+                                Intent i = new Intent(Login.this, Sign_Up.class);
+                                i.putExtra("phone",login_phone);
+
+                                startActivity(i);
+                                finish();
                             }
                             else if(response.code()==403){
                                 Common.CreateSignAlertDialog(Login.this,getResources().getString(R.string.Incorrect_password));
