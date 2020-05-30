@@ -100,5 +100,5 @@
     <string name="field_req">الحقل مطلوب</string>
     <string name="with_a_big_bag_and_providing_the_client_with_meat_bags_free_of_charge">بكيس كبير مع تزويد العميل باكياس لحمه ( مجانا )</string>
     <string name="sacrifice_cooked_mandi_250_riyals">طلب الذبيحه مطبوخه مندى (250 ريال )</string>
-    <string name="points">Points</string>
+    <string name="points">النقط : </string>
 </resources>
