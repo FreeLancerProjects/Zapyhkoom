@@ -54,11 +54,11 @@ public class Fragment_More extends Fragment {
         View view = inflater.inflate(R.layout.fragment_more_, container, false);
         intitview(view);
         get_setting();
-if(userModel!=null){
-    get_Balance();
-}else {
-    consbalance.setVisibility(View.GONE);
-}
+        if (userModel != null) {
+            get_Balance();
+        } else {
+            consbalance.setVisibility(View.GONE);
+        }
         // Inflate the layout for this fragment
         return view;
     }
@@ -92,8 +92,8 @@ if(userModel!=null){
             @Override
             public void onResponse(Call<BalanceCount> call, Response<BalanceCount> response) {
                 if (response.isSuccessful()) {
-                   // setting_models = response.body();
-                    tv_balance.setText(response.body().getBalance()+"");
+                    // setting_models = response.body();
+                    tv_balance.setText(response.body().getBalance() + "");
                 } else {
                     try {
                         Log.e("Error_code", response.code() + "_" + response.errorBody().string());
@@ -120,10 +120,10 @@ if(userModel!=null){
         lang_img = view.findViewById(R.id.lang);
         logout = view.findViewById(R.id.logout);
         tv_balance = view.findViewById(R.id.tv_balance);
-        consbalance=view.findViewById(R.id.cons_balance);
+        consbalance = view.findViewById(R.id.cons_balance);
         activity = (Home_Activity) getActivity();
         preferences = Preferences.getInstance();
-        userModel=preferences.getUserData(activity);
+        userModel = preferences.getUserData(activity);
         activity = (Home_Activity) getActivity();
         if (preferences.getlang(activity).equals("ar")) {
             call.setRotation(180);
