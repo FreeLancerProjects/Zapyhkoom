@@ -1,6 +1,7 @@
 package com.creativeshare.zapyhakoom.services;
 
 
+import com.creativeshare.zapyhakoom.Model.BalanceCount;
 import com.creativeshare.zapyhakoom.Model.Data_Model;
 import com.creativeshare.zapyhakoom.Model.Catogry_Model_Slide;
 import com.creativeshare.zapyhakoom.Model.Item_Cart_Model;
@@ -30,7 +31,7 @@ public interface Services {
     @FormUrlEncoded
     @POST("api/login")
     Call<UserModel> login(@Field("mobile") String mobile//,
-                         // @Field("password") String password
+                          // @Field("password") String password
     );
 
     @FormUrlEncoded
@@ -98,6 +99,7 @@ public interface Services {
                                           @Query(value = "language") String language,
                                           @Query(value = "key") String key
     );
+
     @GET("geocode/json")
     Call<PlaceGeocodeData> getGeoData(@Query(value = "latlng") String latlng,
                                       @Query(value = "language") String language,
@@ -108,6 +110,12 @@ public interface Services {
 
     @GET("api/settings")
     Call<Setting_Model> get_setting();
+    @FormUrlEncoded
+    @POST("api/get-balance")
+    Call<BalanceCount> getBalance(
+            @Field("user_id") Integer user_id
+
+    );
 
     @FormUrlEncoded
     @POST("api/finish-order")

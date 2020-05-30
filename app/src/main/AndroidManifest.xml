@@ -47,7 +47,6 @@
             android:name="com.creativeshare.zapyhakoom.Activities_fragment.Activites.Login"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="adjustPan" />
-        android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.creativeshare.zapyhakoom.Activities_fragment.Activites.Activity_code"
             android:configChanges="orientation|screenSize|keyboardHidden"
